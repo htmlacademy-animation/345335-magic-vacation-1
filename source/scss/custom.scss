@@ -1,0 +1,132 @@
+.page-header__menu a {
+  transition: color .3s ease;
+
+  &:not(.active) {
+    &::after {
+      display: block;
+      width: 0;
+      left: auto;
+      right: 0;
+      transition: width .3s ease;
+      background-color: $c-purple;
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+      right: auto;
+    }
+  }
+
+  &.active {
+    cursor: default;
+    &:hover {
+      color: $c-light;
+    }
+
+    &::after {
+      background-color: $c-light;
+    }
+  }
+}
+
+.social-block__toggler {
+  &::before {
+    transition: width .3s linear, height .3s linear;
+  }
+}
+
+.social-block {
+  .social-block__list li {
+    opacity: 0;
+    transform: translateY(5px);
+
+    .social-block__link {
+      transition: color .3s ease;
+    }
+  }
+
+  &--active {
+    .social-block__list li {
+      opacity: 1;
+      transform: translateY(0);
+
+      &:first-child {
+        transition: transform .3s ease 0s, opacity .4s ease-out 0s;
+      }
+      &:nth-child(2) {
+        transition: transform .3s ease .2s, opacity .4s ease-out .2s;
+      }
+      &:last-child {
+        transition: transform .3s ease .4s, opacity .4s ease-out .4s;
+      }
+    }
+  }
+}
+
+@keyframes fadeInBottomToTop {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to { opacity: 1 }
+}
+
+.intro__message {
+  animation: fadeInBottomToTop 1s ease-out;
+}
+
+.swiper-slide  {
+  .slider__item-text {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10%);
+    transition: opacity 1.5s ease, transform 1s ease;
+    transition-delay: 0s;
+  }
+
+  &-next {
+    .slider__item-text {
+      transition-delay: .3s;
+    }
+  }
+
+  &-prev {
+    .slider__item-text {
+      transition-duration: 0s;
+      transition-delay: 0s;
+    }
+  }
+
+  &-next,
+  &-active {
+    .slider__item-text {
+      opacity: 1;
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
+
+  &-prev {
+    opacity: 0;
+    transform: translateX(50%);
+    visibility: hidden;
+  }
+}
+
+@keyframes growTextField {
+  from { width: 0; }
+  to { width: calc(100% - 21rem) }
+}
+
+.form {
+  justify-content: flex-end;
+}
+
+.form__button {
+  max-width: calc(100% - (100% - 21rem + 3rem));
+}
+
+.form__field {
+  animation: growTextField 0.5s ease-out;
+}
