@@ -1,3 +1,6 @@
+$easeOutSine: cubic-bezier(.61, 1, .88, 1);
+$easeInOutBack: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
 .page-header__menu a {
   transition: color .3s ease;
 
@@ -25,6 +28,8 @@
     }
 
     &::after {
+      width: 0;
+      transition: width .5s ease .3s;
       background-color: $c-light;
     }
   }
@@ -62,18 +67,6 @@
       }
     }
   }
-}
-
-@keyframes fadeInBottomToTop {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to { opacity: 1 }
-}
-
-.intro__message {
-  animation: fadeInBottomToTop 1s ease-out;
 }
 
 .swiper-slide  {
@@ -128,5 +121,65 @@
 }
 
 .form__field {
-  animation: growTextField 0.5s ease-out;
+  animation: growTextField .5s ease-out;
+}
+
+.intro__message {
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: all .5s  ease-out .5s;
+}
+
+.page-header__logo {
+  transform: translateX(-3rem);
+  opacity: 0;
+  transition: all .5s $easeOutSine;
+}
+
+.page-header__nav {
+  opacity: 0;
+  transition: all .5s $easeOutSine .3s;
+}
+
+.social-block__toggler::before {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: all .8s $easeInOutBack;
+}
+
+.screen__footer {
+  transform: translateY(10rem);
+  transition: all .5s $easeOutSine;
+}
+
+body.loaded  {
+  .page-header__menu a.active::after {
+    width: 100%;
+  }
+
+  .intro__message {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .page-header__nav {
+    opacity: 1;
+  }
+
+  .page-header__logo {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .social-block__toggler::before {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  .screen__footer {
+    transform: translateY(0);
+  }
+
 }
