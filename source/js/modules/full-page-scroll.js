@@ -6,6 +6,7 @@ export default class FullPageScroll {
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.filler = document.querySelector(`.filler`);
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
@@ -29,8 +30,12 @@ export default class FullPageScroll {
 
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
-    this.activeScreen = (newIndex < 0) ? 0 : newIndex;
+
+    newIndex === 2 ? this.filler.classList.add(`active`) : this.filler.classList.remove(`active`);
+
     this.changePageDisplay();
+    this.activeScreen = (newIndex < 0) ? 0 : newIndex;
+
   }
 
   changePageDisplay() {

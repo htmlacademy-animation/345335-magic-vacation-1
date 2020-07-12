@@ -181,5 +181,29 @@ body.loaded  {
   .screen__footer {
     transform: translateY(0);
   }
+}
 
+.filler {
+  height: 100%;
+  width: 100%;
+  transform: translateY(100%);
+  background-color: $c-dark;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  transform: translateY(100%);
+
+  &.active {
+    animation: fillerAnimation 1s ease;
+    animation-fill-mode: none;
+  }
+}
+
+@keyframes fillerAnimation {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
