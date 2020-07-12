@@ -31,8 +31,8 @@ export default class FullPageScroll {
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
 
-    if(newIndex === 2 ) {
-      this.filler.classList.add(`active`)
+    if (newIndex === 2) {
+      this.filler.classList.add(`active`);
     } else {
       this.filler.classList.remove(`active`);
     }
