@@ -35,12 +35,6 @@ $easeInOutBack: cubic-bezier(0.68, -0.6, 0.32, 1.6);
   }
 }
 
-.social-block__toggler {
-  &::before {
-    transition: width .3s linear, height .3s linear;
-  }
-}
-
 .social-block {
   .social-block__list li {
     opacity: 0;
@@ -178,6 +172,18 @@ body.loaded  {
     opacity: 1;
   }
 
+  .social-block__toggler {
+    &:hover {
+      &::before {
+        width: 112.5%;
+        height: 112.5%;
+      }
+    }
+    &::before {
+      transition: width .3s linear, height .3s linear;
+    }
+  }
+
   .screen__footer {
     transform: translateY(0);
   }
@@ -205,5 +211,79 @@ body.loaded  {
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+.rules__item::before {
+  transition: all .5s linear 1s;
+}
+
+@keyframes prizesCircles {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes prizesText {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.screen--rules.active {
+  .rules__item {
+    &::before {
+      animation: prizesCircles .3s linear;
+      animation-fill-mode: backwards;
+    }
+    p {
+      animation: prizesText .3s linear;
+      animation-fill-mode: backwards;
+    }
+    &:first-child {
+      &:before,
+      p {
+        animation-delay: .2s;
+      }
+    }
+    &:nth-child(2) {
+      &:before,
+      p {
+        animation-delay: .4s;
+      }
+    }
+    &:nth-child(3) {
+      &:before,
+      p {
+        animation-delay: .6s;
+      }
+    }
+    &:nth-child(4) {
+      &:before,
+      p {
+        animation-delay: .8s;
+      }
+    }
+  }
+}
+
+.rules__link {
+  opacity: 0;
+  font-size: 0;
+  color: $c-transparent;
+  transition: opacity .3s linear, font-size .3s linear .2s, color .3s linear .4s;
+
+  &.appear {
+    opacity: 1;
+    font-size: 2.4rem;
+    color: $c-dark;
   }
 }
