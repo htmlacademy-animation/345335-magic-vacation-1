@@ -23,14 +23,13 @@ const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
 
 const body = document.querySelector(`body`);
-const lastRulesItem = document.querySelector(".rules__item:last-child");
-const rulesButtonElement = document.querySelector(".rules__link");
+const lastRulesItem = document.querySelector(`.rules__item:last-child`);
+const rulesButtonElement = document.querySelector(`.rules__link`);
 
 body.onload = function () {
   body.classList.add(`loaded`);
 };
 
-lastRulesItem.onanimationend = function(event) {
-  rulesButtonElement.classList.add('appear');
-}
-
+lastRulesItem.onanimationend = function () {
+  rulesButtonElement.classList.add(`appear`);
+};
