@@ -62,7 +62,6 @@ export default class LetterAnimation {
     this._element.appendChild(content);
 
     this._needPrepare = false;
-
   }
 
   runAnimation() {
