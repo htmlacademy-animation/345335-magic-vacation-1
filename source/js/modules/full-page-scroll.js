@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import LetterAnimation from './letter-animation';
 
 export default class FullPageScroll {
   constructor() {
@@ -8,6 +9,9 @@ export default class FullPageScroll {
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
     this.filler = document.querySelector(`.filler`);
     this.rulesButtonElement = document.querySelector(`.rules__link`);
+    this.rulesTitleElement = document.querySelector(`.rules__title`);
+    this.introTitleElement = document.querySelector(`.intro__title`);
+    this.introDateElement = document.querySelector(`.intro__date`);
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
@@ -41,6 +45,13 @@ export default class FullPageScroll {
     this.changePageDisplay();
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
     this.rulesButtonElement.classList.remove(`appear`);
+
+    if (this.activeScreen === 3) {
+      const animationTopScreenTextLine = new LetterAnimation(`.rules__title`, 500, `active`, `transform`);
+      setTimeout(()=>{
+        animationTopScreenTextLine.runAnimation();
+      }, 500);
+    }
   }
 
   changePageDisplay() {
