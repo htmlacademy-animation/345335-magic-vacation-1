@@ -121,7 +121,7 @@ $easeInOutBack: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 .intro__message {
   opacity: 0;
   transform: translateY(3rem);
-  transition: all .5s  ease-out .5s;
+  transition: all .4s ease-out .8s;
 }
 
 .page-header__logo {
@@ -139,7 +139,8 @@ $easeInOutBack: cubic-bezier(0.68, -0.6, 0.32, 1.6);
   width: 0;
   height: 0;
   opacity: 0;
-  transition: all .8s $easeInOutBack;
+  transform: translate(-50%, -50%) scale(1);
+  transition: width .8s $easeInOutBack, height .8s $easeInOutBack, opacity .8s linear, transform .1s linear;
 }
 
 .screen__footer {
@@ -175,12 +176,8 @@ body.loaded  {
   .social-block__toggler {
     &:hover {
       &::before {
-        width: 112.5%;
-        height: 112.5%;
+        transform: translate(-50%, -50%) scale(1.1);
       }
-    }
-    &::before {
-      transition: width .3s linear, height .3s linear;
     }
   }
 
@@ -286,4 +283,52 @@ body.loaded  {
     font-size: 2.4rem;
     color: $c-dark;
   }
+}
+
+.intro__date {
+  line-height: 1;
+}
+
+.intro__date,
+.rules__title,
+.intro__title {
+  overflow: hidden;
+}
+
+.intro__title {
+  padding-top: 22px;
+}
+
+.text__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.text__word > span {
+  transform: translate3d(0, 1.9em, 0);
+  display: inline-block;
+}
+
+.intro__label.appear,
+.intro__date.active,
+.intro__title.active,
+.rules__title.active {
+  opacity: 1;
+}
+
+.intro__label,
+.intro__date,
+.intro__title,
+.rules__title {
+  opacity: 0;
+}
+
+.intro__date.active .text__word > span,
+.intro__title.active .text__word > span,
+.rules__title.active .text__word > span {
+  transform: translate3d(0, 0, 0);
+}
+
+.intro__label {
+  transition: opacity .3s ease-out .7s;
 }
