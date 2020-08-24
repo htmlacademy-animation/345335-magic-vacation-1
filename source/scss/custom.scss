@@ -332,3 +332,43 @@ body.loaded  {
 .intro__label {
   transition: opacity .3s ease-out .7s;
 }
+
+.slider__pagination {
+  animation: sliderPagination .5s ease-out .7s both;
+}
+
+.slider__control {
+  &:first-child {
+    animation: sliderControlRight .5s ease-out .7s both;
+  }
+  &:last-child {
+    animation: sliderControlLeft .5s ease-out .7s both;
+  }
+}
+
+@keyframes sliderPagination{
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sliderControlRight {
+  from {
+    transform: translateX(-40px) rotate(-360deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes sliderControlLeft {
+  from {
+    transform: translateX(40px) rotate(360deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+}
